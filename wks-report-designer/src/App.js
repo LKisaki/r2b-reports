@@ -31,9 +31,8 @@ export default class App extends React.Component {
         arr.splice(toIndex, 0, element);
     }
 
-    arrayMoveArrays(index, fromArray, toArray) {
-        toArray.push(fromArray[index]);
-        fromArray.slice(index, 1);
+    arrayMoveArrays(toIndex, element, toArray) {
+        toArray.splice(toIndex, 0, element);
     }
 
     arrayContains(element, array) {
@@ -47,32 +46,51 @@ export default class App extends React.Component {
 
     onDragEnd = result => {
 
-        const { destination, source, draggableId } = result;
-
-        if (!destination) {
-            return;
-        }
-
-        let newDataSources = Array.from(this.state.dataSources);
+        const newDataSources = Array.from(this.state.dataSources);
         let newReportHeader = Array.from(this.state.reportHeader);
         let newReportBody = Array.from(this.state.reportBody);
         let newReportFooter = Array.from(this.state.reportFooter);
 
-        //this.arrayMove(newDataSources, source.index, destination.index);
-        let destArray;
-        switch (destination.droppableId) {
-            case 'reportHeaderDroppable':
-                destArray = newReportHeader;
-                break;
-            case 'reportBodyDroppable':
-                destArray = newReportBody;
-                break;
-            case 'reportFooterDroppable':
-                destArray = newReportFooter;
-        }
+        const { destination, source, draggableId } = result;
 
-        if (destArray && !this.arrayContains(newDataSources[source.index], destArray)) {
-            this.arrayMoveArrays(source.index, newDataSources, destArray);
+        if (!destination) {
+            if (source.droppableId === 'dataSourceDroppable') {
+                return;
+            } else {
+                let srcArray;
+                switch (source.droppableId) {
+                    case 'reportHeaderDroppable':
+                        srcArray = newReportHeader;
+                        break;
+                    case 'reportBodyDroppable':
+                        srcArray = newReportBody;
+                        break;
+                    case 'reportFooterDroppable':
+                        srcArray = newReportFooter;
+                }
+                srcArray.splice(source.index, 1);
+            }
+        } else if (destination) {
+
+            let destArray;
+            switch (destination.droppableId) {
+                case 'reportHeaderDroppable':
+                    destArray = newReportHeader;
+                    break;
+                case 'reportBodyDroppable':
+                    destArray = newReportBody;
+                    break;
+                case 'reportFooterDroppable':
+                    destArray = newReportFooter;
+            }
+
+            if (destination.droppableId !== source.droppableId) {
+                if (destArray && !this.arrayContains(newDataSources[source.index], destArray)) {
+                    this.arrayMoveArrays(destination.index, newDataSources[source.index], destArray);
+                }
+            } else if (destination.droppableId === source.droppableId) {
+                this.arrayMove(destArray, source.index, destination.index);
+            }
         }
 
         const newState = {
