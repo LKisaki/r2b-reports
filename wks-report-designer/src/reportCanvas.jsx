@@ -30,6 +30,12 @@ const ReporteRegionName = styled.h5`
     color: gray;
 `;
 
+const RegionElement = styled.div`
+    margin: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+`;
+
 export default class ReportCanvas extends React.Component {
 
     render() {
@@ -39,6 +45,9 @@ export default class ReportCanvas extends React.Component {
                     {provided => (
                         <ReportHeader ref={provided.innerRef} {...provided.droppableProps}>
                             <ReporteRegionName>Report Header</ReporteRegionName>
+                            {this.props.reportHeader.map(reportHeader => {
+                                return <RegionElement key={reportHeader.id}>{reportHeader.id}</RegionElement>
+                            })}
                             {provided.placeholder}
                         </ReportHeader>
                     )}
@@ -48,6 +57,9 @@ export default class ReportCanvas extends React.Component {
                     {provided => (
                         <ReportBody ref={provided.innerRef} {...provided.droppableProps}>
                             <ReporteRegionName>Report Body</ReporteRegionName>
+                            {this.props.reportBody.map(reportBody => {
+                                return <RegionElement key={reportBody.id}>{reportBody.id}</RegionElement>
+                            })}
                             {provided.placeholder}
                         </ReportBody>
                     )}
@@ -57,6 +69,9 @@ export default class ReportCanvas extends React.Component {
                     {provided => (
                         <ReportFooter ref={provided.innerRef} {...provided.droppableProps}>
                             <ReporteRegionName>Report Footer</ReporteRegionName>
+                            {this.props.reportFooter.map(reportFooter => {
+                                return <RegionElement key={reportFooter.id}>{reportFooter.id}</RegionElement>
+                            })}
                             {provided.placeholder}
                         </ReportFooter>
                     )}

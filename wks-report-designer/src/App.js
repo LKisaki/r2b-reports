@@ -12,7 +12,6 @@ const Container = styled.div`
     margin: 8px;
     border: 1px solid lightgrey;
     border-radius: 2px;
-    padding: 8px;
 `;
 
 const DataSourceList = styled.div`
@@ -21,11 +20,30 @@ const DataSourceList = styled.div`
 
 const ReportCanvasContainer = styled.div`
     padding: 8px;
-    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.12), 0 1px 4px rgba(0, 0, 0, 0.24);
 `;
 
 export default class App extends React.Component {
     state = data;
+
+    arrayMove(arr, fromIndex, toIndex) {
+        var element = arr[fromIndex];
+        arr.splice(fromIndex, 1);
+        arr.splice(toIndex, 0, element);
+    }
+
+    arrayMoveArrays(index, fromArray, toArray) {
+        toArray.push(fromArray[index]);
+        fromArray.slice(index, 1);
+    }
+
+    arrayContains(element, array) {
+        for (let index = 0; index < array.length; index++) {
+            array[index];
+            if (element.id === array[index].id) {
+                return true;
+            }
+        }
+    }
 
     onDragEnd = result => {
 
@@ -34,7 +52,36 @@ export default class App extends React.Component {
         if (!destination) {
             return;
         }
-        console.log(destination);
+
+        let newDataSources = Array.from(this.state.dataSources);
+        let newReportHeader = Array.from(this.state.reportHeader);
+        let newReportBody = Array.from(this.state.reportBody);
+        let newReportFooter = Array.from(this.state.reportFooter);
+
+        //this.arrayMove(newDataSources, source.index, destination.index);
+        let destArray;
+        switch (destination.droppableId) {
+            case 'reportHeaderDroppable':
+                destArray = newReportHeader;
+                break;
+            case 'reportBodyDroppable':
+                destArray = newReportBody;
+                break;
+            case 'reportFooterDroppable':
+                destArray = newReportFooter;
+        }
+
+        if (destArray && !this.arrayContains(newDataSources[source.index], destArray)) {
+            this.arrayMoveArrays(source.index, newDataSources, destArray);
+        }
+
+        const newState = {
+            dataSources: newDataSources,
+            reportHeader: newReportHeader,
+            reportBody: newReportBody,
+            reportFooter: newReportFooter
+        }
+        this.setState(newState);
     }
 
     render() {
@@ -42,7 +89,7 @@ export default class App extends React.Component {
             <DragDropContext
                 onDragEnd={this.onDragEnd}
             >
-                <Droppable droppableId="dataSourceDroppable">
+                <Droppable droppableId="dataSourceDroppable" isDropDisabled={true} >
                     {provided => (
                         <Container ref={provided.innerRef} {...provided.droppableProps}>
                             <DataSourceList>
@@ -51,7 +98,7 @@ export default class App extends React.Component {
                                 )}
                             </DataSourceList>
                             {provided.placeholder}
-                            <ReportCanvasContainer><ReportCanvas /></ReportCanvasContainer>
+                            <ReportCanvasContainer><ReportCanvas reportHeader={this.state.reportHeader} reportBody={this.state.reportBody} reportFooter={this.state.reportFooter} /></ReportCanvasContainer>
 
                         </Container>
                     )}
