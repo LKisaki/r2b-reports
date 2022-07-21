@@ -24,13 +24,14 @@ export default class ReportCanvas extends React.Component {
                                         index={index} key={'reportHeaderDroppable' + reportHeader.id}
                                         disableInteractiveElementBlocking>
                                         {(provided) => (
-                                            <div
+                                            <input
                                                 className="report-region-element"
+                                                disabled={true}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
-                                                ref={provided.innerRef}>
-                                                {reportHeader.name}
-                                            </div>
+                                                ref={provided.innerRef}
+                                                value={reportHeader.name}
+                                            />
                                         )}
                                     </Draggable>
 
@@ -55,15 +56,16 @@ export default class ReportCanvas extends React.Component {
                                     <Draggable
                                         draggableId={'reportBodyDroppable' + reportBody.id}
                                         index={index}
-                                        key={'reportBodyDroppable' + reportBody.id}>
+                                        key={'reportBodyDroppable' + reportBody.id}
+                                        disableInteractiveElementBlocking>
                                         {(provided) => (
-                                            <div
+                                            <input
                                                 className="report-region-element"
+                                                disabled={true}
+                                                value={reportBody.name}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
-                                                ref={provided.innerRef}>
-                                                {reportBody.name}
-                                            </div>
+                                                ref={provided.innerRef} />
                                         )}
                                     </Draggable>
                                 )}
@@ -78,7 +80,7 @@ export default class ReportCanvas extends React.Component {
                         <>
                             <div className="report-region-name">Report Footer</div>
 
-                            <div 
+                            <div
                                 id="report-footer"
                                 className='shadow'
                                 ref={provided.innerRef}
@@ -91,12 +93,13 @@ export default class ReportCanvas extends React.Component {
                                         key={'reportFooterDroppable' + reportFooter.id}>
 
                                         {(provided) => (
-                                            <div className="report-region-element"
+                                            <input
+                                                className="report-region-element"
+                                                disabled={true}
+                                                value={reportFooter.name}
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
-                                                ref={provided.innerRef}>
-                                                {reportFooter.name}
-                                            </div>
+                                                ref={provided.innerRef} />
                                         )}
                                     </Draggable>
 

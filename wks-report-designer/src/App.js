@@ -1,6 +1,9 @@
 import React from 'react';
 import data from './data'
 
+import SplitPane from 'react-split-pane';
+import "./split-pane.css"
+
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 
@@ -92,33 +95,35 @@ export default class App extends React.Component {
             <DragDropContext
                 onDragEnd={this.onDragEnd}
             >
-                <Droppable droppableId="dataSourceDroppable" isDropDisabled={true}>
-                    {provided => (
-                        <div
-                            id='main-container'
-                            ref={provided.innerRef}
-                            {...provided.droppableProps}>
+                <SplitPane split="vertical">
+                    <Droppable droppableId="dataSourceDroppable" isDropDisabled={true}>
+                        {provided => (
                             <div
-                                id='toolbox-container'>
-                                {this.state.dataSources.map((dataSource, index) =>
-                                    <DataSource
-                                        key={dataSource.id}
-                                        id={dataSource.id}
-                                        name={dataSource.name}
-                                        index={index} />
-                                )}
+                                id='main-container'
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}>
+                                <div
+                                    id='toolbox-container'>
+                                    {this.state.dataSources.map((dataSource, index) =>
+                                        <DataSource
+                                            key={dataSource.id}
+                                            id={dataSource.id}
+                                            name={dataSource.name}
+                                            index={index} />
+                                    )}
+                                </div>
+                                {provided.placeholder}
                             </div>
-                            {provided.placeholder}
-                        </div>
-                    )}
-                </Droppable>
+                        )}
+                    </Droppable>
 
-                <div id='report-canvas-container'>
-                    <ReportCanvas
-                        reportHeader={this.state.reportHeader}
-                        reportBody={this.state.reportBody}
-                        reportFooter={this.state.reportFooter} />
-                </div>
+                    <div id='report-canvas-container' className='shadow-lg'>
+                        <ReportCanvas
+                            reportHeader={this.state.reportHeader}
+                            reportBody={this.state.reportBody}
+                            reportFooter={this.state.reportFooter} />
+                    </div>
+                </SplitPane>
             </DragDropContext>
         );
     }

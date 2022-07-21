@@ -11,7 +11,8 @@ export default class DataSource extends React.Component {
                         {...provided.dragHandleProps}
                         ref={provided.innerRef}
                     >
-                        {this.props.name}
+                        {/* TODO organize this image reference */}
+                        <img src='./data-source.png' height='20px' title={this.props.name} />
                     </div>
                 )}
             </Draggable>
