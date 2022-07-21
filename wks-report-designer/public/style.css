@@ -1,14 +1,12 @@
 div {
-    border: 1px solid lightgrey;
-    border-radius: 2px;
 }
 
-#main-container {
+#main-container{
     height: 100%;
     width: 100%;
 }
 
-#datasource-list {
+#toolbox-container{
     height: 100%;
     width: 20%;
     position: fixed;
@@ -16,10 +14,12 @@ div {
     top: 0;
     overflow-x: hidden;
     padding-top: 20px;
-    left: 0;
 }
 
-#report-canvas-container {
+#report-canvas-container{
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+
     height: 100%;
     width: 79%;
     position: fixed;
@@ -31,34 +31,50 @@ div {
 }
 
 /* Toolbox panel */
-.toolbox-element {
+.toolbox-element{
     border: 1px solid lightgrey;
     border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 8px;
+    padding: 2px;
+    margin-bottom: 2px;
     background-color: white;
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: smaller;
 }
 
 /* Report Canvas */
 
-#report-header {
-    height: 10%;
-}
+#report-header{
+    border: 1px solid lightgrey;
+    border-radius: 2px;
 
-#report-body {
+    height: 10%;
+    display: flex;
+}
+    
+#report-body{
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+
     height: 80%;
+    display: flex;
 }
 
-#report-footer {
+#report-footer{
+    border: 1px solid lightgrey;
+    border-radius: 2px;
+
     height: 10%;
+    display: flex;
 }
 
-.report-region-name {
+.report-region-name{
     color: gray;
-    display: inline-block;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: smaller;
 }
 
-.report-region-element {
-    color: red;
-    display: inline-block;
+.report-region-element{
+    border: 1px solid lightgrey;
+    height: 5%;
 }
