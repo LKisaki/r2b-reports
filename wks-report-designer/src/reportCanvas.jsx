@@ -1,41 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import { Droppable } from 'react-beautiful-dnd';
 import { Draggable } from "react-beautiful-dnd";
-
-const ReportHeader = styled.div`
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 8px;
-    text-align: center;
-`;
-
-const ReportBody = styled.div`
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 8px;
-    text-align: center;
-`;
-
-const ReportFooter = styled.div`
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-    padding: 8px;
-    margin-bottom: 8px;
-    text-align: center;
-`;
-
-const ReporteRegionName = styled.h5`
-    color: gray;
-`;
-
-const RegionElement = styled.div`
-    margin: 8px;
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-`;
 
 export default class ReportCanvas extends React.Component {
 
@@ -44,64 +9,64 @@ export default class ReportCanvas extends React.Component {
             <>
                 <Droppable droppableId="reportHeaderDroppable">
                     {provided => (
-                        <ReportHeader ref={provided.innerRef} {...provided.droppableProps}>
-                            <ReporteRegionName>Report Header</ReporteRegionName>
-                            {this.props.reportHeader.map((reportHeader, index) => {
-                                return <Draggable draggableId={'reportHeaderDroppable' + reportHeader.id} index={index} key={'reportHeaderDroppable' + reportHeader.id}>
+                        <div id="report-header" ref={provided.innerRef} {...provided.droppableProps}>
+                            <div className="report-region-name">Report Header</div>
+                            {this.props.reportHeader.map((reportHeader, index) =>
+                                <Draggable draggableId={'reportHeaderDroppable' + reportHeader.id} index={index} key={'reportHeaderDroppable' + reportHeader.id}>
                                     {(provided) => (
-                                        <RegionElement
+                                        <div className="report-region-element"
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}>
                                             {reportHeader.name}
-                                        </RegionElement>
+                                        </div>
                                     )}
                                 </Draggable>
-                            })}
+                            )}
                             {provided.placeholder}
-                        </ReportHeader>
+                        </div>
                     )}
                 </Droppable>
 
                 <Droppable droppableId="reportBodyDroppable">
                     {provided => (
-                        <ReportBody ref={provided.innerRef} {...provided.droppableProps}>
-                            <ReporteRegionName>Report Body</ReporteRegionName>
-                            {this.props.reportBody.map((reportBody, index) => {
-                                return <Draggable draggableId={'reportBodyDroppable' + reportBody.id} index={index} key={'reportBodyDroppable' + reportBody.id}>
+                        <div id="report-body" ref={provided.innerRef} {...provided.droppableProps}>
+                            <div className="report-region-name">Report Body</div>
+                            {this.props.reportBody.map((reportBody, index) =>
+                                <Draggable draggableId={'reportBodyDroppable' + reportBody.id} index={index} key={'reportBodyDroppable' + reportBody.id}>
                                     {(provided) => (
-                                        <RegionElement
+                                        <div className="report-region-element"
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}>
                                             {reportBody.name}
-                                        </RegionElement>
+                                        </div>
                                     )}
                                 </Draggable>
-                            })}
+                            )}
                             {provided.placeholder}
-                        </ReportBody>
+                        </div>
                     )}
                 </Droppable>
 
                 <Droppable droppableId="reportFooterDroppable">
                     {provided => (
-                        <ReportFooter ref={provided.innerRef} {...provided.droppableProps}>
-                            <ReporteRegionName>Report Footer</ReporteRegionName>
-                            {this.props.reportFooter.map((reportFooter, index) => {
-                                return <Draggable draggableId={'reportFooterDroppable' + reportFooter.id} index={index} key={'reportFooterDroppable' + reportFooter.id}>
+                        <div id="report-footer" ref={provided.innerRef} {...provided.droppableProps}>
+                            <div className="report-region-name">Report Footer</div>
+                            {this.props.reportFooter.map((reportFooter, index) =>
+                                <Draggable draggableId={'reportFooterDroppable' + reportFooter.id} index={index} key={'reportFooterDroppable' + reportFooter.id}>
                                     {(provided) => (
-                                        <RegionElement
+                                        <div className="report-region-element"
                                             {...provided.draggableProps}
                                             {...provided.dragHandleProps}
                                             ref={provided.innerRef}>
                                             {reportFooter.name}
-                                        </RegionElement>
+                                        </div>
                                     )}
                                 </Draggable>
-                            })}
+                            )}
                             {provided.placeholder}
-                        </ReportFooter>
+                        </div>
                     )}
                 </Droppable>
             </>

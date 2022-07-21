@@ -1,26 +1,11 @@
 import React from 'react';
 import data from './data'
-import styled from 'styled-components';
 
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 
 import DataSource from './dataSource';
 import ReportCanvas from './reportCanvas';
-
-const Container = styled.div`
-    margin: 8px;
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-`;
-
-const DataSourceList = styled.div`
-    padding: 8px;
-`;
-
-const ReportCanvasContainer = styled.div`
-    padding: 8px;
-`;
 
 export default class App extends React.Component {
     state = data;
@@ -109,16 +94,18 @@ export default class App extends React.Component {
             >
                 <Droppable droppableId="dataSourceDroppable" isDropDisabled={true} >
                     {provided => (
-                        <Container ref={provided.innerRef} {...provided.droppableProps}>
-                            <DataSourceList>
+                        <div id='main-container' ref={provided.innerRef} {...provided.droppableProps}>
+                            <div id='datasource-list'>
                                 {this.state.dataSources.map((dataSource, index) =>
                                     <DataSource key={dataSource.id} id={dataSource.id} name={dataSource.name} index={index} />
                                 )}
-                            </DataSourceList>
+                            </div>
                             {provided.placeholder}
-                            <ReportCanvasContainer><ReportCanvas reportHeader={this.state.reportHeader} reportBody={this.state.reportBody} reportFooter={this.state.reportFooter} /></ReportCanvasContainer>
+                            <div id='report-canvas-container'>
+                                <ReportCanvas reportHeader={this.state.reportHeader} reportBody={this.state.reportBody} reportFooter={this.state.reportFooter} />
+                            </div>
 
-                        </Container>
+                        </div>
                     )}
                 </Droppable>
 
