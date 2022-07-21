@@ -12,11 +12,20 @@ export default class ReportCanvas extends React.Component {
                         <>
                             <div className="report-region-name">Report Header</div>
 
-                            <div id="report-header" ref={provided.innerRef} {...provided.droppableProps}>
+                            <div
+                                id="report-header"
+                                className='shadow'
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}>
                                 {this.props.reportHeader.map((reportHeader, index) =>
-                                    <Draggable draggableId={'reportHeaderDroppable' + reportHeader.id} index={index} key={'reportHeaderDroppable' + reportHeader.id}>
+
+                                    <Draggable
+                                        draggableId={'reportHeaderDroppable' + reportHeader.id}
+                                        index={index} key={'reportHeaderDroppable' + reportHeader.id}
+                                        disableInteractiveElementBlocking>
                                         {(provided) => (
-                                            <div className="report-region-element"
+                                            <div
+                                                className="report-region-element"
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                                 ref={provided.innerRef}>
@@ -24,6 +33,7 @@ export default class ReportCanvas extends React.Component {
                                             </div>
                                         )}
                                     </Draggable>
+
                                 )}
                                 {provided.placeholder}
                             </div>
@@ -36,11 +46,19 @@ export default class ReportCanvas extends React.Component {
                         <>
                             <div className="report-region-name">Report Body</div>
 
-                            <div id="report-body" ref={provided.innerRef} {...provided.droppableProps}>
+                            <div
+                                id="report-body"
+                                className='shadow'
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}>
                                 {this.props.reportBody.map((reportBody, index) =>
-                                    <Draggable draggableId={'reportBodyDroppable' + reportBody.id} index={index} key={'reportBodyDroppable' + reportBody.id}>
+                                    <Draggable
+                                        draggableId={'reportBodyDroppable' + reportBody.id}
+                                        index={index}
+                                        key={'reportBodyDroppable' + reportBody.id}>
                                         {(provided) => (
-                                            <div className="report-region-element"
+                                            <div
+                                                className="report-region-element"
                                                 {...provided.draggableProps}
                                                 {...provided.dragHandleProps}
                                                 ref={provided.innerRef}>
@@ -60,9 +78,18 @@ export default class ReportCanvas extends React.Component {
                         <>
                             <div className="report-region-name">Report Footer</div>
 
-                            <div id="report-footer" ref={provided.innerRef} {...provided.droppableProps}>
+                            <div 
+                                id="report-footer"
+                                className='shadow'
+                                ref={provided.innerRef}
+                                {...provided.droppableProps}>
                                 {this.props.reportFooter.map((reportFooter, index) =>
-                                    <Draggable draggableId={'reportFooterDroppable' + reportFooter.id} index={index} key={'reportFooterDroppable' + reportFooter.id}>
+
+                                    <Draggable
+                                        draggableId={'reportFooterDroppable' + reportFooter.id}
+                                        index={index}
+                                        key={'reportFooterDroppable' + reportFooter.id}>
+
                                         {(provided) => (
                                             <div className="report-region-element"
                                                 {...provided.draggableProps}
@@ -72,6 +99,7 @@ export default class ReportCanvas extends React.Component {
                                             </div>
                                         )}
                                     </Draggable>
+
                                 )}
                                 {provided.placeholder}
                             </div>

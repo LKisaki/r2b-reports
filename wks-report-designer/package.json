@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@atlaskit/css-reset": "^6.3.13",
+    "bootstrap": "^5.2.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^18.2.0",

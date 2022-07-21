@@ -94,10 +94,18 @@ export default class App extends React.Component {
             >
                 <Droppable droppableId="dataSourceDroppable" isDropDisabled={true}>
                     {provided => (
-                        <div id='main-container' ref={provided.innerRef} {...provided.droppableProps}>
-                            <div id='toolbox-container'>
+                        <div
+                            id='main-container'
+                            ref={provided.innerRef}
+                            {...provided.droppableProps}>
+                            <div
+                                id='toolbox-container'>
                                 {this.state.dataSources.map((dataSource, index) =>
-                                    <DataSource key={dataSource.id} id={dataSource.id} name={dataSource.name} index={index} />
+                                    <DataSource
+                                        key={dataSource.id}
+                                        id={dataSource.id}
+                                        name={dataSource.name}
+                                        index={index} />
                                 )}
                             </div>
                             {provided.placeholder}
@@ -106,10 +114,11 @@ export default class App extends React.Component {
                 </Droppable>
 
                 <div id='report-canvas-container'>
-                    <ReportCanvas reportHeader={this.state.reportHeader} reportBody={this.state.reportBody} reportFooter={this.state.reportFooter} />
+                    <ReportCanvas
+                        reportHeader={this.state.reportHeader}
+                        reportBody={this.state.reportBody}
+                        reportFooter={this.state.reportFooter} />
                 </div>
-
-
             </DragDropContext>
         );
     }

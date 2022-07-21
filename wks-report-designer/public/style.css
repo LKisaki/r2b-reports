@@ -1,80 +1,103 @@
-div {
-}
+div {}
 
-#main-container{
+#main-container {
     height: 100%;
     width: 100%;
+
+    display: flex;
 }
 
-#toolbox-container{
-    height: 100%;
-    width: 20%;
+#toolbox-container {
+    width: 10%;
+    padding-left: 5px;
+
     position: fixed;
-    z-index: 1;
     top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
+    left: 0;
+    height: 100vh;
+    z-index: 999;
+    background: #cecbcb;
+    transition: all 0.3s;
 }
 
-#report-canvas-container{
-    border: 1px solid lightgrey;
-    border-radius: 2px;
-
+#report-canvas-container {
     height: 100%;
-    width: 79%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
+    width: 90%;
     padding-top: 20px;
+
+    position: fixed;
+    overflow-x: hidden;
+    top: 0;
     right: 0;
 }
 
 /* Toolbox panel */
-.toolbox-element{
+.toolbox-element {
     border: 1px solid lightgrey;
     border-radius: 2px;
     padding: 2px;
     margin-bottom: 2px;
     background-color: white;
 
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana;
     font-size: smaller;
+    width: 40px;
+    text-align: center;
 }
 
 /* Report Canvas */
 
-#report-header{
+#report-header {
     border: 1px solid lightgrey;
     border-radius: 2px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 
     height: 10%;
     display: flex;
 }
-    
-#report-body{
+
+#report-body {
     border: 1px solid lightgrey;
     border-radius: 2px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 
     height: 80%;
     display: flex;
+    
 }
 
-#report-footer{
+#report-footer {
     border: 1px solid lightgrey;
     border-radius: 2px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;
 
     height: 10%;
     display: flex;
 }
 
-.report-region-name{
+.report-region-name {
     color: gray;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: smaller;
+    margin-left: 5px;
 }
 
-.report-region-element{
+.report-region-element {
     border: 1px solid lightgrey;
-    height: 5%;
+    border-radius: 2px;
+    padding: 2px;
+    margin-bottom: 2px;
+
+    height: 20px;
+    width: 35px;
+
+    font-family: Verdana;
+    font-size: smaller;
+    text-align: center;
 }
