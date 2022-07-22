@@ -7,6 +7,26 @@
     overflow: auto;
 }
 
+#internal-container {
+    height: 93%;
+    width: 100%;
+    background-color: rgb(240, 240, 240);
+
+    overflow: auto;
+}
+
+/* Menu panel */
+#menu-container {
+    overflow: auto;
+    border-bottom: 1px solid lightgrey;
+    color: white;
+    background-color: rgb(43, 86, 154);
+}
+
+.menu {
+    z-index: 999;
+}
+
 /* Toolbox panel */
 #toolbox-container {
     padding: 5px;
@@ -28,7 +48,7 @@
 }
 
 /* Properties panel */
-#properties-container{
+#properties-container {
     background-color: lightgray;
     height: 100%;
 }
@@ -144,4 +164,10 @@
     font-size: smaller;
 
     background-color: white;
+}
+
+.console {
+    background-color: rgb(43, 86, 154);
+    color: white;
+    padding: 2.5px;
 }

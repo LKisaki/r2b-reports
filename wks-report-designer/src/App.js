@@ -6,6 +6,7 @@ import { Allotment } from "allotment";
 import { DragDropContext } from 'react-beautiful-dnd';
 import { Droppable } from 'react-beautiful-dnd';
 
+import AppMenu from './menu';
 import DataSource from './dataSource';
 import ReportCanvas from './reportCanvas';
 
@@ -94,58 +95,57 @@ export default class App extends React.Component {
     render() {
         return (
             <div id='main-container'>
-                <Allotment vertical>
+                {/* Menu */}
+                <AppMenu />
 
-                    {/* Menu */}
-                    <Allotment.Pane maxSize={30}>
-                        <h5>Menu</h5>
-                    </Allotment.Pane>
+                <div id='internal-container'>
+                    <Allotment>
+                        <DragDropContext onDragEnd={this.onDragEnd}>
+                            <Allotment>
+                                {/* Toolbox */}
+                                <Allotment.Pane maxSize={100}>
+                                    <Droppable droppableId="dataSourceDroppable" isDropDisabled={true}>
+                                        {provided => (
+                                            <div
+                                                id='toolbox-container'
+                                                ref={provided.innerRef}
+                                                {...provided.droppableProps}>
+                                                {this.state.dataSources.map((dataSource, index) =>
+                                                    <DataSource
+                                                        key={dataSource.id}
+                                                        id={dataSource.id}
+                                                        name={dataSource.name}
+                                                        index={index} />
+                                                )}
+                                                {provided.placeholder}
+                                            </div>
+                                        )}
+                                    </Droppable>
+                                </Allotment.Pane>
 
-                    <DragDropContext onDragEnd={this.onDragEnd}>
-                        <Allotment>
-                            {/* Toolbox */}
-                            <Allotment.Pane maxSize={100}>
-                                <Droppable droppableId="dataSourceDroppable" isDropDisabled={true}>
-                                    {provided => (
-                                        <div
-                                            id='toolbox-container'
-                                            ref={provided.innerRef}
-                                            {...provided.droppableProps}>
-                                            {this.state.dataSources.map((dataSource, index) =>
-                                                <DataSource
-                                                    key={dataSource.id}
-                                                    id={dataSource.id}
-                                                    name={dataSource.name}
-                                                    index={index} />
-                                            )}
-                                            {provided.placeholder}
-                                        </div>
-                                    )}
-                                </Droppable>
-                            </Allotment.Pane>
+                                {/*  Canvas */}
+                                <Allotment.Pane>
+                                    <ReportCanvas
+                                        reportHeader={this.state.reportHeader}
+                                        reportBody={this.state.reportBody}
+                                        reportFooter={this.state.reportFooter} />
+                                </Allotment.Pane>
 
-                            {/*  Canvas */}
-                            <Allotment.Pane minSize={400}>
-                                <ReportCanvas
-                                    reportHeader={this.state.reportHeader}
-                                    reportBody={this.state.reportBody}
-                                    reportFooter={this.state.reportFooter} />
-                            </Allotment.Pane>
+                                {/* Properties */}
+                                <Allotment.Pane maxSize={400}>
+                                    <div id='properties-container'>
+                                        <h5>Properties</h5>
+                                    </div>
+                                </Allotment.Pane>
+                            </Allotment>
+                        </DragDropContext>
+                    </Allotment>
+                </div>
 
-                            {/* Properties */}
-                            <Allotment.Pane maxSize={300}>
-                                <div id='properties-container'>
-                                    <h5>Properties</h5>
-                                </div>
-                            </Allotment.Pane>
-                        </Allotment>
-                    </DragDropContext>
-
-                    {/* Console */}
-                    <Allotment.Pane maxSize={30}>
-                        <h5>Console</h5>
-                    </Allotment.Pane>
-                </Allotment>
+                {/* Console */}
+                <div className='console'>
+                    <img src='./console.png'/>
+                </div>
             </div >
         );
     }

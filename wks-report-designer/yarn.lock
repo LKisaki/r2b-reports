@@ -7199,6 +7199,11 @@ react-beautiful-dnd@^13.1.0:
     redux "^4.0.4"
     use-memo-one "^1.1.1"
 
+react-desktop-menus@^1.0.8:
+  version "1.0.8"
+  resolved "https://registry.yarnpkg.com/react-desktop-menus/-/react-desktop-menus-1.0.8.tgz#460063ecbf17e7f97fc19c27dc5a292a19427835"
+  integrity sha512-8hHXJtNYWxKaXgTTVgeyLH4FYxuRugZjUU1KLXg2kLcQRi3ZBrE61GXew6zwb/kqQSlzbvX6m0sd+QgfaEX+gA==
+
 react-dev-utils@^12.0.1:
   version "12.0.1"
   resolved "https://registry.npmjs.org/react-dev-utils/-/react-dev-utils-12.0.1.tgz"
