@@ -4,12 +4,12 @@
   "private": true,
   "dependencies": {
     "@atlaskit/css-reset": "^6.3.13",
+    "allotment": "^1.14.5",
     "bootstrap": "^5.2.0",
     "react": "^18.2.0",
     "react-beautiful-dnd": "^13.1.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "react-split-pane": "^0.1.92"
+    "react-scripts": "5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
