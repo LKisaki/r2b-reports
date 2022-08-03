@@ -17,7 +17,6 @@ export default class ReportCanvas extends React.Component {
                     {provided => (
                         <div
                             id="report-header"
-                            className='shadow'
                             ref={provided.innerRef}
                             {...provided.droppableProps}>
                             {this.props.reportHeader.map((reportHeader, index) =>
@@ -48,7 +47,6 @@ export default class ReportCanvas extends React.Component {
                     {provided => (
                         <div
                             id="report-body"
-                            className='shadow'
                             ref={provided.innerRef}
                             {...provided.droppableProps}>
                             {this.props.reportBody.map((reportBody, index) =>
@@ -79,7 +77,6 @@ export default class ReportCanvas extends React.Component {
                     {provided => (
                         <div
                             id="report-footer"
-                            className='shadow'
                             ref={provided.innerRef}
                             {...provided.droppableProps}>
                             {this.props.reportFooter.map((reportFooter, index) =>
